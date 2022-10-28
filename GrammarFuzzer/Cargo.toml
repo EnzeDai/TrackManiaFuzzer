@@ -6,3 +6,10 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+libafl = { path = "../LibAFL/libafl/", features = ["default", "nautilus"] }
+libafl_qemu = { path = "../LibAFL/libafl_qemu/", features = ["usermode", "i386"] }
+regex = "1.5"   # regex 是 rust 的正则表达式库
+syscall-numbers = "3.0.0"   # 系统调用 目前只支持 Linux 它是libafl_qemu的依赖库
+
+[profile.release]
+overflow-checks = true  # 检查整数溢出
